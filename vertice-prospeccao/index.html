@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vértice Prospecção — Demo</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">V</div><div><div class="brand-name">Vértice</div><div class="brand-sub">PROSPECÇÃO</div></div></div>
+    <div class="nav-label">MENU PRINCIPAL</div>
+    <nav class="nav">
+      <button data-view="overview"><span class="nav-ico">▦</span>Visão geral</button>
+      <button class="active" data-view="search"><span class="nav-ico">⌕</span>Buscar empresas</button>
+      <button data-view="leads"><span class="nav-ico">▤</span>Leads salvos <span id="nav-count" style="margin-left:auto;font-size:10px;color:#a9bee2">0</span></button>
+      <button data-view="reports"><span class="nav-ico">◫</span>Relatórios</button>
+      <button data-view="settings"><span class="nav-ico">⚙</span>Configurações</button>
+    </nav>
+    <div class="sidebar-foot">Prospecção inteligente<br>Versão demonstrativa · 1.0</div>
+  </aside>
+  <main class="main">
+    <section class="view" id="view-overview">
+      <div class="topbar"><div><h1>Visão geral</h1><div class="subtitle">Acompanhe suas oportunidades de prospecção</div></div><button class="primary-btn" data-goto="search">＋ Nova pesquisa</button></div>
+      <div class="stat-grid"><div class="stat"><small>Empresas encontradas</small><strong id="stat-found">248</strong></div><div class="stat"><small>Leads salvos</small><strong id="stat-leads">0</strong></div><div class="stat"><small>Empresas sem website</small><strong>103</strong></div></div>
+      <div class="simple-panel"><h2>Comece sua prospecção</h2><p>Pesquise empresas por segmento e região, encontre oportunidades e salve os contatos que deseja acompanhar.</p><button class="primary-btn" data-goto="search">Buscar empresas</button></div>
+    </section>
+    <section class="view active" id="view-search">
+      <div class="topbar"><div><h1>Buscar empresas</h1><div class="subtitle">Configure sua pesquisa e encontre potenciais clientes</div></div><button class="primary-btn" id="run-search">⌕ &nbsp; Iniciar pesquisa</button></div>
+      <section class="panel search-panel">
+        <h2 class="panel-title">Nova pesquisa</h2><div class="panel-sub">Defina o segmento e a localização para pesquisar no Google Maps</div>
+        <div class="form-grid">
+          <div class="field"><label for="category">SEGMENTO / CATEGORIA</label><select id="category"><option>Restaurantes e cafeterias</option><option>Clínicas e consultórios</option><option>Academias e estúdios</option><option>Salões de beleza</option><option>Oficinas mecânicas</option><option>Hotéis e pousadas</option></select></div>
+          <div class="field"><label for="city">CIDADE / REGIÃO</label><input id="city" value="Florianópolis, Santa Catarina" placeholder="Ex.: Florianópolis, SC"></div>
+          <div class="field"><label for="radius">RAIO DA BUSCA</label><select id="radius"><option>5 km</option><option selected>10 km</option><option>15 km</option><option>25 km</option><option>50 km</option></select></div>
+          <div class="field"><label for="limit">MÁX. RESULTADOS</label><select id="limit"><option>50</option><option>100</option><option selected>250</option><option>500</option></select></div>
+        </div>
+        <label class="checkline"><input type="checkbox" id="no-site"> Priorizar estabelecimentos sem website cadastrado</label>
+      </section>
+      <div class="results-head"><span class="eyebrow">RESULTADOS DA BUSCA</span><span class="pill" id="total-pill">248 empresas</span><span class="pill orange" id="nosite-pill">103 sem site</span></div>
+      <div class="content-grid">
+        <section class="panel results-panel">
+          <input class="result-search" id="filter" placeholder="⌕  Pesquisar nos resultados..." aria-label="Pesquisar nos resultados">
+          <div class="table-head"><span>EMPRESA</span><span>WEBSITE</span><span>AÇÃO</span></div>
+          <div id="company-list"></div>
+        </section>
+        <aside class="panel map-panel">
+          <h2 class="map-title">Prévia da localização</h2>
+          <div class="map-art" aria-label="Mapa ilustrativo com pontos de empresas">
+            <div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div>
+            <div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div>
+            <div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div>
+            <div class="block"></div><div class="block"></div><div class="block"></div><div class="block"></div>
+            <span class="map-label center">Centro</span><span class="map-label trindade">Trindade</span>
+            <i class="pin p1"></i><i class="pin p2"></i><i class="pin p3"></i><i class="pin p4"></i>
+          </div>
+          <p class="map-caption">Visualize a distribuição antes de salvar seus leads.</p><span class="map-tag">Mapa ilustrativo</span>
+        </aside>
+      </div>
+    </section>
+    <section class="view" id="view-leads">
+      <div class="topbar"><div><h1>Leads salvos</h1><div class="subtitle">Empresas que você separou para acompanhar</div></div><button class="primary-btn" data-goto="search">＋ Buscar empresas</button></div>
+      <div class="simple-panel"><div id="saved-list"></div></div>
+    </section>
+    <section class="view" id="view-reports">
+      <div class="topbar"><div><h1>Relatórios</h1><div class="subtitle">Uma visão rápida dos resultados desta demonstração</div></div></div>
+      <div class="stat-grid"><div class="stat"><small>Resultados da última busca</small><strong id="report-found">248</strong></div><div class="stat"><small>Leads salvos</small><strong id="report-leads">0</strong></div><div class="stat"><small>Taxa sem website</small><strong>41,5%</strong></div></div>
+      <div class="simple-panel"><h2>Resumo da prospecção</h2><p>Os números são dados fictícios para demonstrar a interface. Uma integração com backend poderá fornecer resultados reais, histórico de pesquisas e exportação de relatórios.</p></div>
+    </section>
+    <section class="view" id="view-settings">
+      <div class="topbar"><div><h1>Configurações</h1><div class="subtitle">Preferências da sua experiência</div></div></div>
+      <div class="simple-panel"><h2>Preferências de pesquisa</h2><p>Esta demonstração não armazena dados em servidor. Os leads salvos permanecem apenas durante esta sessão.</p><label class="checkline" style="margin-top:18px"><input type="checkbox" checked disabled> Interface em português</label><label class="checkline" style="margin-top:12px"><input type="checkbox" checked disabled> Dados demonstrativos</label></div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="js/empresas.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
