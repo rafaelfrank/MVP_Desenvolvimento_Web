@@ -64,7 +64,7 @@ h1 { margin:0;font-family:var(--site-font-heading);font-size:calc(29px * var(--s
 .company-info { display:flex;align-items:center;gap:12px;min-width:0; }
 .company-icon { width:40px;height:40px;flex:0 0 40px;border-radius:11px;display:grid;place-items:center;font-size:17px; }
 .company-name { font-size:13px;font-weight:680;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
-.company-place { font-size:11px;color:var(--muted);margin-top:5px; }
+.company-place { font-size:11px;color:var(--muted);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
 .site-status { display:inline-flex;border-radius:30px;padding:7px 13px;font-size:10px;font-weight:650;white-space:nowrap; }
 .site-status.no { background:#fff0e2;color:#c3650b; }
 .site-status.yes { background:#e0f5ed;color:#008c62; }
